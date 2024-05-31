@@ -192,10 +192,13 @@ class MessagePayload {
       }
     }
 
-    const attachments = this.options.files?.map((file, index) => ({
+  const attachments = this.options.files?.map((file, index) => ({
       id: index.toString(),
       description: file.description,
+      duration_secs: file.duration_secs,
+      waveform: file.waveform
     }));
+    
     if (Array.isArray(this.options.attachments)) {
       this.options.attachments.push(...(attachments ?? []));
     } else {
